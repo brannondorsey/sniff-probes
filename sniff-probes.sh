@@ -55,7 +55,4 @@ if [ "$CHANNEL_HOP" -eq 1 ] ; then
 fi
 
 # filter with awk, then use sed to convert tabs to spaces and remove front and back quotes around SSID
-sudo tcpdump -l -i "$IFACE" -e -s 256 type mgt subtype probe-req | awk -f parse-tcpdump.awk | tee -a "$OUTPUT" # | sed -e "s/\t/ /g" # | sed -e "s/\"$//g" | sed -e "s/ \"/ /g"
-
-# load from probes.txt
-# gawk -f parse-tcpdump.awk probes.txt | sed -r -e "s/\t/ /g" | sed -e "s/\"$//g" | sed -e "s/ \"/ /g"
+sudo tcpdump -l -i "$IFACE" -e -s 256 type mgt subtype probe-req | awk -f parse-tcpdump.awk | tee -a "$OUTPUT" 
