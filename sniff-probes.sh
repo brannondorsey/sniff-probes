@@ -26,33 +26,10 @@ if [ -z "$IFACE" ] ; then
 	exit 1
 fi
 
-# bring the wireless interface down
-sudo ifconfig "$IFACE" down >/dev/null 2>&1
-if [ "$?" -ne 0 ] ; then 
-	echo "Error bringing down device \"$IFACE\""
-	echo "Are you sure this device exists?"
-	exit 1
-fi
-
-# set it to monitor mode
-sudo iwconfig "$IFACE" mode monitor >/dev/null 2>&1
-if [ "$?" -ne 0 ] ; then 
-	echo "Error putting device \"$IFACE\" into monitor mode"
-	echo "Are you sure this device supports monitor mode?"
-	exit 1
-fi
-
-# bring the interface back up
-sudo ifconfig "$IFACE" up >/dev/null 2>&1
-if [ "$?" -ne 0 ] ; then 
-	echo "Error bringing up device \"$IFACE\". Aborting."
-	exit 1
-fi
-
 if [ "$CHANNEL_HOP" -eq 1 ] ; then
 	# channel hop in the background
 	channel_hop &
 fi
 
 # filter with awk, then use sed to convert tabs to spaces and remove front and back quotes around SSID
-sudo tcpdump -l -i "$IFACE" -e -s 256 type mgt subtype probe-req | awk -f parse-tcpdump.awk | tee -a "$OUTPUT" 
+sudo tcpdump -l -I -i "$IFACE" -e -s 256 type mgt subtype probe-req | awk -f parse-tcpdump.awk | tee -a "$OUTPUT" 
