@@ -22,7 +22,7 @@ channel_hop() {
 }
 
 if [ -z "$IFACE" ] ; then
-	echo "IFACE env variable must be set. Type \"iwconfig\" to view wireless interaces."
+	echo "IFACE env variable must be set. Type \"ifconfig\" to view network interaces."
 	exit 1
 fi
 
