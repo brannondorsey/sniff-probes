@@ -11,7 +11,8 @@ For a creative application of probe request capture, see [ProbeKit](https://gith
 ## Sniffing Probe Requests
 
 ```bash
-# Type "iwconfig" to list available wireless devices.
+# Type "ifconfig" to list available network devices.
+# Wireless devices generally start with a "w"
 IFACE=wlan0 ./sniff-probes.sh
 ```
 
