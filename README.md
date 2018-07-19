@@ -27,7 +27,7 @@ IFACE=wlan0 ./sniff-probes.sh
 00:01:13 -87dBm 38:63:bb:d1:6a:b7 "offline"
 00:01:25 -83dBm 5c:aa:fd:20:23:41 "Sonos_pZkIex0zatRvhdJTAifLzmatdh"
 ```
-Requires tcpdump and awk (installed on many *nix systems by default). Wireless device must support monitor mode.
+Requires **tcpdump** and **gawk** (GNU awk). Both of these packages are installed on many *nix systems by default, but if they aren't you will have to install them manually. Your wireless device must also support monitor mode. Here is [a list of WiFi cards that support monitor mode](https://www.wirelesshack.org/best-kali-linux-compatible-usb-adapter-dongles-2016.html) (2018).
 
 Prints `timetamp`, `signal strength`, `sender MAC address` and `SSID` to screen. Saves output as a space-delimeted "csv" to `probes.txt` by default.
 

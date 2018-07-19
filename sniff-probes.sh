@@ -21,6 +21,11 @@ channel_hop() {
 	done
 }
 
+if ! [ -x "$(command -v gawk)" ]; then
+  echo 'gawk (GNU awk) is not installed. Please install gawk.' >&2
+  exit 1
+fi
+
 if [ -z "$IFACE" ] ; then
 	echo "IFACE env variable must be set. Type \"ifconfig\" to view network interaces."
 	exit 1
